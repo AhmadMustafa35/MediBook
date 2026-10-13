@@ -1,0 +1,698 @@
+/* ============================================
+   CHECKOUT PAGE — MediBook
+   Real-world, premium payment experience
+   ============================================ */
+
+.checkout-page {
+  min-height: 100vh;
+  padding: 40px 20px 80px;
+  background: linear-gradient(160deg, #f0f4ff 0%, #f7fafb 60%, #edfaf5 100%);
+  color: #172d3b;
+}
+
+/* Loading state */
+.checkout-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  gap: 20px;
+  color: #64748b;
+}
+
+.checkout-spinner {
+  width: 42px;
+  height: 42px;
+  border: 3px solid #e2e8f0;
+  border-top-color: #0d9488;
+  border-radius: 50%;
+  animation: checkout-spin 0.75s linear infinite;
+}
+
+@keyframes checkout-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Error state */
+.checkout-error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  gap: 16px;
+  text-align: center;
+}
+
+.checkout-error-icon {
+  font-size: 48px;
+}
+
+.checkout-error-state h2 {
+  font-size: 24px;
+  color: #172d3b;
+}
+
+.checkout-error-state p {
+  color: #64748b;
+}
+
+/* Back button & secure badge */
+.checkout-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  animation: checkout-enter 500ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes checkout-enter {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.checkout-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.checkout-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.checkout-back:hover {
+  color: #0d9488;
+}
+
+.checkout-secure-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  background: #fff;
+  border: 1px solid #d1fae5;
+  border-radius: 100px;
+  color: #059669;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.1);
+}
+
+/* Two column layout */
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* ============================================
+   LEFT: Order Summary
+   ============================================ */
+
+.checkout-summary {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 10px 40px rgba(23, 45, 59, 0.06);
+}
+
+.checkout-summary-header {
+  margin-bottom: 28px;
+}
+
+.checkout-eyebrow {
+  color: #0d9488;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.checkout-summary-header h1 {
+  margin: 10px 0 6px;
+  font-family: "Manrope", sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #172d3b;
+  letter-spacing: -0.8px;
+}
+
+.checkout-summary-header p {
+  color: #71818d;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Doctor card within summary */
+.checkout-doctor-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 20px;
+  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+  border: 1px solid #bbf7d0;
+  border-radius: 14px;
+  margin-bottom: 24px;
+}
+
+.checkout-doctor-img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #a7f3d0;
+  flex-shrink: 0;
+}
+
+.checkout-doctor-label {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #059669;
+}
+
+.checkout-doctor-info h2 {
+  margin: 6px 0 4px;
+  font-family: "Manrope", sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #172d3b;
+}
+
+.checkout-doctor-spec {
+  font-size: 13px;
+  color: #0d9488;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.checkout-doctor-hospital {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* Detail rows */
+.checkout-detail-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.checkout-detail-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.checkout-detail-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.checkout-detail-row > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.checkout-detail-label {
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.checkout-detail-row strong {
+  font-size: 14px;
+  color: #172d3b;
+  font-weight: 600;
+}
+
+/* Price breakdown */
+.checkout-price-breakdown {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 24px;
+}
+
+.checkout-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 14px;
+  color: #64748b;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.checkout-price-row:last-of-type {
+  border-bottom: none;
+}
+
+.checkout-free {
+  color: #059669;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.checkout-price-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  margin-top: 6px;
+  border-top: 2px solid #e2e8f0;
+  font-size: 16px;
+  color: #172d3b;
+  font-weight: 600;
+}
+
+.checkout-price-total strong {
+  font-family: "Manrope", sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #0d9488;
+}
+
+/* Trust badges */
+.checkout-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.checkout-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.checkout-trust-item svg {
+  color: #0d9488;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   RIGHT: Payment Panel
+   ============================================ */
+
+.checkout-payment-panel {
+  position: sticky;
+  top: 100px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 10px 40px rgba(23, 45, 59, 0.06);
+}
+
+.checkout-payment-header {
+  margin-bottom: 24px;
+}
+
+.checkout-payment-header h2 {
+  margin: 10px 0 6px;
+  font-family: "Manrope", sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #172d3b;
+  letter-spacing: -0.5px;
+}
+
+.checkout-payment-header p {
+  font-size: 13px;
+  color: #71818d;
+  line-height: 1.6;
+}
+
+/* Stripe card visual */
+.checkout-stripe-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+  border: 1.5px solid #c4b5fd;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.checkout-stripe-logo {
+  flex-shrink: 0;
+}
+
+.checkout-stripe-info {
+  flex: 1;
+}
+
+.checkout-stripe-info p {
+  font-size: 13px;
+  font-weight: 700;
+  color: #4c1d95;
+}
+
+.checkout-stripe-sub {
+  font-size: 11px !important;
+  color: #7c3aed !important;
+  font-weight: 500 !important;
+  margin-top: 2px;
+}
+
+.checkout-stripe-cards {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.checkout-card-badge {
+  padding: 3px 7px;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.checkout-card-badge.visa {
+  background: #1a1f71;
+  color: #fff;
+}
+
+.checkout-card-badge.mc {
+  background: #eb001b;
+  color: #fff;
+}
+
+.checkout-card-badge.amex {
+  background: #2e77bc;
+  color: #fff;
+}
+
+/* Steps */
+.checkout-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 24px;
+}
+
+.checkout-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: #475569;
+  font-weight: 500;
+  padding: 6px 0;
+}
+
+.checkout-step-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0d9488, #0f766e);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.checkout-step-line {
+  width: 2px;
+  height: 14px;
+  background: #e2e8f0;
+  margin-left: 12px;
+}
+
+/* Error banner */
+.checkout-inline-error {
+  padding: 12px 16px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  color: #b91c1c;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* Already paid */
+.checkout-paid-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px;
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+  border-radius: 12px;
+  color: #15803d;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.checkout-paid-badge svg {
+  flex-shrink: 0;
+}
+
+/* Pay button */
+.checkout-pay-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 56px;
+  padding: 0 24px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 800;
+  font-family: "Manrope", sans-serif;
+  cursor: pointer;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    filter 200ms ease;
+  box-shadow: 0 8px 24px rgba(13, 148, 136, 0.3);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: -0.3px;
+}
+
+.checkout-pay-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 100%);
+}
+
+.checkout-pay-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(13, 148, 136, 0.38);
+  filter: saturate(1.1);
+}
+
+.checkout-pay-btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.99);
+}
+
+.checkout-pay-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.checkout-btn-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: checkout-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+/* Cancel link */
+.checkout-cancel-link {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.checkout-cancel-link a {
+  color: #0d9488;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.checkout-cancel-link a:hover {
+  text-decoration: underline;
+}
+
+/* Disclaimer */
+.checkout-disclaimer {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #f1f5f9;
+  font-size: 11px;
+  color: #94a3b8;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* Outline button */
+.checkout-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 24px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  background: #fff;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.checkout-btn-outline:hover {
+  border-color: #0d9488;
+  color: #0d9488;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 820px) {
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-payment-panel {
+    position: static;
+  }
+}
+
+@media (max-width: 500px) {
+  .checkout-page {
+    padding: 24px 16px 60px;
+  }
+
+  .checkout-summary,
+  .checkout-payment-panel {
+    padding: 22px 18px;
+  }
+
+  .checkout-summary-header h1 {
+    font-size: 24px;
+  }
+
+  .checkout-trust {
+    gap: 8px;
+  }
+
+  .checkout-pay-btn {
+    font-size: 15px;
+  }
+}
+
+/* ============================================
+   STRIPE ELEMENTS CARD FORM
+   ============================================ */
+
+.stripe-card-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.stripe-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.stripe-field label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.stripe-input-wrap {
+  padding: 14px 16px;
+  background: #0f172a;
+  border: 1.5px solid #1e293b;
+  border-radius: 10px;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.stripe-input-wrap:focus-within {
+  border-color: #0d9488;
+  box-shadow: 0 0 0 3px rgba(13,148,136,0.15);
+}
+
+.stripe-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.checkout-loading-text {
+  text-align: center;
+  color: #64748b;
+  font-size: 13px;
+  padding: 20px 0;
+}
+
+.checkout-inline-success {
+  padding: 12px 16px;
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 10px;
+  color: #15803d;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 500px) {
+  .stripe-field-row {
+    grid-template-columns: 1fr;
+  }
+}
