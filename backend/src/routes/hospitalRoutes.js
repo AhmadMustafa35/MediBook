@@ -31,13 +31,11 @@ router.post(
 
 router.get("/", getHospitals);
 
-router.get("/:id", getHospital);
-
 // =========================
 // ADMIN HOSPITAL MANAGEMENT
 // =========================
 
-// Get all hospitals
+// Get all hospitals (must be before /:id to avoid route conflict)
 router.get(
   "/admin/all",
   protect,
@@ -60,5 +58,11 @@ router.put(
   authorize("admin"),
   updateHospitalStatus
 );
+
+// =========================
+// PUBLIC - SINGLE HOSPITAL (must be last to avoid catching admin routes)
+// =========================
+
+router.get("/:id", getHospital);
 
 module.exports = router;
